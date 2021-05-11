@@ -23,7 +23,7 @@ export default function Home() {
           </div>
 
           {/* File Upload */}
-          <p className="my-6 text-center text-gray-4 text-xs">Or</p>
+          <p className="my-6 text-center text-gray-4 text-sm">Or</p>
           <form className="flex flex-col items-center justify-center">
             <div>
               <label for="file" className="bg-blue1 hover:bg-blue-600 transition px-4 cursor-pointer py-2 shadow-sm rounded-lg block text-white">Choose a file</label>
@@ -32,6 +32,13 @@ export default function Home() {
           </form>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="flex py-4 text-gray-5 text-sm justify-self-end">
+        <p>
+        created by <a href="" className="font-medium">@ifilipe_lype</a> - <a href="">devChallenges.io</a>
+        </p>
+      </footer>
     </div>
   )
 }
