@@ -34,8 +34,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="flex py-4 text-gray-5 text-sm justify-self-end">
-        <p>
+      <footer className="flex items-center justify-center py-4 text-gray-5 text-xs md:text-sm">
+        <p className="text-center">
         created by <a href="" className="font-medium">@ifilipe_lype</a> - <a href="">devChallenges.io</a>
         </p>
       </footer>
