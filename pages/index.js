@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full container px-5 flex items-center justify-center">
+      <main className="w-full container px-5 py-5 flex items-center justify-center">
         <div className="w-full max-w-md bg-white p-8 splash-shadow rounded-xl">
           <header className="flex flex-col items-center justify-center mb-8">
             <h1 className="text-xl font-medium text-gray-2 mb-4">Upload your image</h1>
@@ -36,7 +36,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="flex items-center justify-center py-4 text-gray-5 text-xs md:text-sm">
         <p className="text-center">
-        created by <a href="" className="font-medium">@ifilipe_lype</a> - <a href="">devChallenges.io</a>
+        created by <a href="" className="font-semibold">@ifilipe_lype</a> - <a href="">devChallenges.io</a>
         </p>
       </footer>
     </div>
