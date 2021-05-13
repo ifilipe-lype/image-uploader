@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 
 import Head from "next/head";
 import ImageDropZone from "../components/ImageDropZone";
+import LoadingBox from "../components/LoadingBox";
 
 export default function Home() {
   const [imageFile, setImageFile ] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    console.log("Image selected! uploading...")
+    if(imageFile){
+      setIsUploading(true)
+    }
   }, [imageFile]);
 
   function handleInputFile(e){
@@ -23,7 +27,11 @@ export default function Home() {
       </Head>
 
       <main className="w-full container px-5 py-5 flex items-center justify-center">
-        <div className="w-full max-w-md bg-white p-8 splash-shadow rounded-xl">
+        {
+          isUploading ? (
+            <LoadingBox title="Uploading..." />
+          ) : (
+            <div className="w-full max-w-md bg-white p-8 splash-shadow rounded-xl">
           <header className="flex flex-col items-center justify-center mb-8">
             <h1 className="text-xl font-medium text-gray-2 mb-4">
               Upload your image
@@ -57,6 +65,9 @@ export default function Home() {
             </div>
           </form>
         </div>
+          )
+        }
+        
       </main>
 
       {/* Footer */}
