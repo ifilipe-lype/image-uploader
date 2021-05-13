@@ -18,7 +18,7 @@ export default function ImageDropZone({ setDropFile }) {
 
   return (
     <div {...getRootProps()}
-      className={`flex flex-col items-center justify-center border-dashed border-2 border-blue px-4 py-8 rounded-xl bg-gray-1 transition ${isDragActive ? "bg-green-100" : ""}`}
+      className={`flex flex-col items-center outline-none justify-center border-dashed border-2 border-blue px-4 py-8 rounded-xl bg-gray-1 transition ${isDragActive ? "bg-green-100" : ""}`}
     >
       <img src="/assets/image.svg" className="w-auto h-auto object-contain" />
       <p className="text-gray-4 mt-8 text-xs">
