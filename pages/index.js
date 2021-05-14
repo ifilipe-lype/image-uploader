@@ -40,7 +40,6 @@ export default function Home() {
   }
 
   function uploadImage(imgFile){
-    console.log(`Uploading... ${imgFile}`);
     setTimeout(() => {
       setStage(STAGES.UPLOADED);
     }, 3000);
