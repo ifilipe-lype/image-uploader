@@ -28,10 +28,10 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     if(imageFile){
       setStage(STAGES.UPLOADING_IMAGE);
-      uploadImage()
+      await uploadImage()
     }
   }, [imageFile]);
 
@@ -39,10 +39,21 @@ export default function Home() {
     setImageFile(e.target.files[0]);
   }
 
-  function uploadImage(imgFile){
-    setTimeout(() => {
-      setStage(STAGES.UPLOADED);
-    }, 3000);
+  async function uploadImage(imgFile){
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const res = await fetch('/api/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json'
+      },
+      body: formData,
+    });
+
+    console.log({res})
+
   }
 
   return (
