@@ -7,11 +7,12 @@ handler.use(middleware);
 
 handler.post(async(req, res) => {
 	try {
-		const file = req.files;
+		const file = req.files.image;
 		const body = req.body;
-         console.log(file)
 		// do stuff with files and body
-		res.status(200).json({});
+
+		// returns the response ok
+		res.status(201).json({ img: file.path });
 	} catch (err) {
 		res.status(400).json({error: err.message});
 	}
