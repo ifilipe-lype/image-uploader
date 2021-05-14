@@ -1,6 +1,6 @@
 import  formidable  from  'formidable';
 
-const  form = formidable({ multiples:  true }); // Single file only.
+const  form = formidable({ multiples:  true });
 
 export  default  async  function  parseMultipartForm(req, res, next) {
 	const  contentType = req.headers['content-type'];
