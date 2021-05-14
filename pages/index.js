@@ -13,6 +13,7 @@ const STAGES =  {
 
 export default function Home() {
   const [imageFile, setImageFile ] = useState(null);
+  const [uploadedImg, setUploadedImg ] = useState(null);
   const [stage, setStage] = useState(STAGES.CHOOSING_IMAGE);
 
   function renderBasedOnStage(stage) {
@@ -21,7 +22,7 @@ export default function Home() {
         return (<LoadingBox title={"Uploading..."} />)
       
       case STAGES.UPLOADED:
-        return (<Preview imgSrc={""} />)
+        return (<Preview imgSrc={uploadedImg} />)
 
       default :
         return (<Uploader setImageFile={setImageFile} handleInputFile={handleInputFile} />)
@@ -30,10 +31,24 @@ export default function Home() {
 
   useEffect(async () => {
     if(imageFile){
-      setStage(STAGES.UPLOADING_IMAGE);
-      await uploadImage()
+      await handleImageUpload();
     }
-  }, [imageFile]);
+  }, [imageFile, uploadedImg]);
+  
+  async function handleImageUpload(){
+    // Enters into uploading stage
+    setStage(STAGES.UPLOADING_IMAGE);
+    
+    try {
+      const {img} = await uploadImage(imageFile);
+      setUploadedImg(img);
+      setImageFile(null);
+      setStage(STAGES.UPLOADED);
+    } catch (e) {
+      console.log(`Error: ${e.message}`);
+    }
+
+  }
 
   function handleInputFile(e){
     setImageFile(e.target.files[0]);
@@ -41,18 +56,14 @@ export default function Home() {
 
   async function uploadImage(imgFile){
     const formData = new FormData();
-    formData.append("image", imageFile);
+    formData.append("image", imgFile);
 
     const res = await fetch('/api/upload', {
       method: 'POST',
-      // headers: {
-      //   'Content-Type': 'multipart/form-data',
-      //   'Accept': 'application/json'
-      // },
       body: formData,
     });
 
-    console.log({res})
+    return res.json();
 
   }
 
