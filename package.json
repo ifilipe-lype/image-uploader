@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "cloudinary": "^1.25.1",
     "formidable": "^1.2.2",
     "next": "10.2.0",
     "next-connect": "^0.10.1",
