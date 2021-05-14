@@ -12,7 +12,9 @@ handler.post(async(req, res) => {
 		// do stuff with files and body
 
 		// returns the response ok
-		res.status(201).json({ img: file.path });
+		setTimeout(() => {
+			res.status(201).json({ img: file.path });
+		}, 1500)
 	} catch (err) {
 		res.status(400).json({error: err.message});
 	}
