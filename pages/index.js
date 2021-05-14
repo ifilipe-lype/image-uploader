@@ -3,19 +3,46 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Uploader from "../components/Uploader";
 import LoadingBox from "../components/LoadingBox";
+import Preview from "../components/Preview";
+
+const STAGES =  {
+  CHOOSING_IMAGE: 0,
+  UPLOADING_IMAGE: 1,
+  UPLOADED: 2
+};
 
 export default function Home() {
   const [imageFile, setImageFile ] = useState(null);
-  const [isUploading, setIsUploading] = useState(false);
+  const [stage, setStage] = useState(STAGES.CHOOSING_IMAGE);
+
+  function renderBasedOnStage(stage) {
+    switch(stage){
+      case STAGES.UPLOADING_IMAGE:
+        return (<LoadingBox title={"Uploading..."} />)
+      
+      case STAGES.UPLOADED:
+        return (<Preview imgSrc={""} />)
+
+      default :
+        return (<Uploader setImageFile={setImageFile} handleInputFile={handleInputFile} />)
+    }
+  }
 
   useEffect(() => {
     if(imageFile){
-      setIsUploading(true)
+      setStage(STAGES.UPLOADING_IMAGE);
+      uploadImage()
     }
   }, [imageFile]);
 
   function handleInputFile(e){
     setImageFile(e.target.files[0]);
+  }
+
+  function uploadImage(imgFile){
+    setTimeout(() => {
+      setStage(STAGES.UPLOADED);
+    }, 3000);
   }
 
   return (
@@ -28,13 +55,8 @@ export default function Home() {
 
       <main className="w-full container px-5 py-5 flex items-center justify-center">
         {
-          isUploading ? (
-            <LoadingBox title="Uploading..." />
-          ) : (
-            <Uploader setImageFile={setImageFile} handleInputFile={handleInputFile} />
-          )
+          renderBasedOnStage(stage)
         }
-        
       </main>
 
       {/* Footer */}
