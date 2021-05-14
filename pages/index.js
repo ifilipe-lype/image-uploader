@@ -45,10 +45,10 @@ export default function Home() {
 
     const res = await fetch('/api/upload', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'Accept': 'application/json'
-      },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      //   'Accept': 'application/json'
+      // },
       body: formData,
     });
 
