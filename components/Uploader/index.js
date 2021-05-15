@@ -9,12 +9,14 @@ export default function Uploader({ setImageFile }) {
     const maxFileSize = 5 * 1024 * 1024;
     const file = e.target.files[0];
 
-    if (file.size <= maxFileSize && (/image/.test(file.type))) {
-      setInputErr(false);
-      setImageFile(file);
-    } else {
-      file.value = "";
-      setInputErr(true);
+    if(file){
+      if (file.size <= maxFileSize && (/image/.test(file.type))) {
+        setInputErr(false);
+        setImageFile(file);
+      } else {
+        file.value = "";
+        setInputErr(true);
+      }
     }
   }
 
