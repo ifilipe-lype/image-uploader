@@ -31,7 +31,7 @@ export default function ImageDropZone({ setDropFile }) {
             <span className="text-blue1">Release to upload image</span>
           ) : (
             isDragActive && isDragReject ? (
-              <span className="text-red-400">file selected is not an image</span>
+              <span className="text-red-400">File selected is not an image</span>
             ) : (
               <span className="text-gray-2">Drag &amp; Drop an image file here to upload</span>
             )
