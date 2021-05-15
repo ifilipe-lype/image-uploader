@@ -27,9 +27,9 @@ export default function Uploader({ setImageFile, setUploadErr }) {
       <header className="flex flex-col items-center justify-center mb-8">
         <h1 className="text-xl font-medium text-gray-2 mb-4">
           Upload your image
-            </h1>
+        </h1>
         <span className="text-xs text-gray-3 font-medium">
-          File should be jpg, jpeg, png, svg
+          File should be an image under 5 MB in size
             </span>
       </header>
 
