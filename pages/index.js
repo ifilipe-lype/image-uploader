@@ -5,56 +5,57 @@ import Uploader from "../components/Uploader";
 import LoadingBox from "../components/LoadingBox";
 import Preview from "../components/Preview";
 
-const STAGES =  {
+const STAGES = {
   CHOOSING_IMAGE: 0,
   UPLOADING_IMAGE: 1,
   UPLOADED: 2
 };
 
 export default function Home() {
-  const [imageFile, setImageFile ] = useState(null);
-  const [uploadedImg, setUploadedImg ] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [uploadedImg, setUploadedImg] = useState(null);
   const [stage, setStage] = useState(STAGES.CHOOSING_IMAGE);
 
+  const [uploadErr, setUploadErr] = useState(false);
+
   function renderBasedOnStage(stage) {
-    switch(stage){
+    switch (stage) {
       case STAGES.UPLOADING_IMAGE:
         return (<LoadingBox title={"Uploading..."} />)
-      
+
       case STAGES.UPLOADED:
         return (<Preview imgSrc={uploadedImg} />)
 
-      default :
-        return (<Uploader setImageFile={setImageFile} handleInputFile={handleInputFile} />)
+      default:
+        return (<Uploader setImageFile={setImageFile} setUploadErr={setUploadErr} />)
     }
   }
 
   useEffect(async () => {
-    if(imageFile){
+    if (imageFile) {
       await handleImageUpload();
     }
   }, [imageFile]);
-  
-  async function handleImageUpload(){
+
+  async function handleImageUpload() {
     // Enters into uploading stage
     setStage(STAGES.UPLOADING_IMAGE);
-    
+    setUploadErr(false);
+
     try {
       const { img } = await uploadImage(imageFile);
       setUploadedImg(img.url);
       setImageFile(null);
       setStage(STAGES.UPLOADED);
     } catch (e) {
-      console.log(e.message);
+      setStage(STAGES.CHOOSING_IMAGE);
+      setImageFile(null)
+      setUploadErr(true);
     }
 
   }
 
-  function handleInputFile(e){
-    setImageFile(e.target.files[0]);
-  }
-
-  async function uploadImage(imgFile){
+  async function uploadImage(imgFile) {
     const formData = new FormData();
     formData.append("image", imgFile);
 
@@ -63,8 +64,8 @@ export default function Home() {
       body: formData,
     });
 
-    const { img, err} = await res.json();
-    if(err) throw new Error(err);
+    const { img, err } = await res.json();
+    if (err) throw new Error(err);
 
     return { img };
 
@@ -78,7 +79,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full container px-5 py-5 flex items-center justify-center">
+      <main className="w-full container px-5 py-5 flex flex-col items-center justify-center">
+        {uploadErr && (
+          <div className="text-red-400 text-xs md:text-sm bg-red-100 p-2 rounded-lg my-4 text-center">
+            <span className="">
+              Failled to upload image! check your internet connection.
+          </span>
+          </div>
+        )}
         {
           renderBasedOnStage(stage)
         }

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 export default function Preview({ imgSrc }) {
     const [copied, setCopied] = useState(false);
