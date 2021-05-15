@@ -15,7 +15,7 @@ export default function ImageDropZone({ setDropFile }) {
     onDrop,
     noClick: true,
     maxFiles: 1,
-    maxSize: 100,
+    maxSize: 4 * 1024,
     accept: "image/*",
   });
 
