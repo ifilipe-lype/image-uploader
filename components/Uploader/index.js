@@ -53,7 +53,7 @@ export default function Uploader({ setImageFile }) {
             title="Choose file"
           />
         </div>
-        { inputErr && <span className="text-red-400 text-xs bg-red-100 p-2 rounded-lg mt-4 text-center">File can only be an image not greater 5 MB in size</span>}
+        { inputErr && <span className="text-red-400 text-xs rounded-lg mt-4 text-center">File can only be an image not greater 5 MB in size</span>}
       </form>
     </div>
   )
