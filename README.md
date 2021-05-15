@@ -36,6 +36,8 @@
 
 ## Overview
 
+A Image uploading app with support for drag and drop, file input choosing.
+
 ![screenshot](https://res.cloudinary.com/dvjnagd3i/image/upload/v1621093182/Screenshot_from_2021-05-15_16-34-01_e11qet.png)
 
 This is an app solution for a challenge in <a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx">devchallenges</a> website
