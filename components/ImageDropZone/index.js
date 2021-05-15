@@ -24,7 +24,7 @@ export default function ImageDropZone({ setDropFile }) {
       className={`flex flex-col items-center outline-none justify-center border-dashed border-2 px-4 py-8 rounded-xl bg-gray-1 transition ${isDragAccept ? "bg-green-100" : ""} ${isDragReject ? "bg-red-100" : ""} ${isDragReject ? "border-red-200" : "border-blue"}`}
     >
       <img src="/assets/image.svg" className="w-auto h-auto object-contain" />
-      <p className="text-gray-4 mt-8 text-xs">
+      <p className="text-gray-4 mt-8 text-center text-xs">
         {
 
           isDragAccept ? (
