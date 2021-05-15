@@ -16,7 +16,7 @@ handler.use(middleware);
 
 handler.post(async (req, res) => {
 	try {
-		const file = req.files.image;
+		const file = req.file.image;
 		// Stream upload
 		const upload_stream = cloudinary.uploader.upload_stream({ tags: 'image_upload_sample_app' }, function (err, image) {
 			if (err){
