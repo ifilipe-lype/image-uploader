@@ -18,7 +18,7 @@ handler.post(async (req, res) => {
 	try {
 		const file = req.files.image;
 		// Stream upload
-		const upload_stream = cloudinary.uploader.upload_stream({ tags: 'basic_sample' }, function (err, image) {
+		const upload_stream = cloudinary.uploader.upload_stream({ tags: 'image_upload_sample_app' }, function (err, image) {
 			if (err){
 				return res.status(500).json({ err: "Failled to upload image!" });
 			}
