@@ -27,7 +27,7 @@ export default function Home() {
         return (<Preview imgSrc={uploadedImg} />)
 
       default:
-        return (<Uploader setImageFile={setImageFile} />)
+        return (<Uploader setImageFile={setImageFile} setUploadErr={setUploadErr} />)
     }
   }
 

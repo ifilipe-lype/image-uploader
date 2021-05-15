@@ -1,11 +1,13 @@
 import { useState } from "react";
 import ImageDropZone from "../ImageDropZone";
 
-export default function Uploader({ setImageFile }) {
+export default function Uploader({ setImageFile, setUploadErr }) {
 
   const [inputErr, setInputErr] = useState(false);
 
   function handleInputFile(e) {
+    setUploadErr(false);
+    
     const maxFileSize = 5 * 1024 * 1024;
     const file = e.target.files[0];
 
