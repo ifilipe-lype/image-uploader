@@ -4,14 +4,10 @@ export default function Preview({ imgSrc }) {
     const [copied, setCopied] = useState(false);
     const inputRef = useRef(null);
 
-
-
-
     function copyUrl() {
         const inputElem = inputRef.current;
-        console.log(inputElem.value)
         inputElem.focus();
-        inputElem.select()
+        inputElem.select();
         inputElem.setSelectionRange(0, 99999); /* For mobile devices */
         document.execCommand("copy");
         setCopied(true);
