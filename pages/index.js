@@ -33,19 +33,19 @@ export default function Home() {
     if(imageFile){
       await handleImageUpload();
     }
-  }, [imageFile, uploadedImg]);
+  }, [imageFile]);
   
   async function handleImageUpload(){
     // Enters into uploading stage
     setStage(STAGES.UPLOADING_IMAGE);
     
     try {
-      const {img} = await uploadImage(imageFile);
-      setUploadedImg(img);
+      const { img } = await uploadImage(imageFile);
+      setUploadedImg(img.url);
       setImageFile(null);
       setStage(STAGES.UPLOADED);
     } catch (e) {
-      console.log(`Error: ${e.message}`);
+      console.log(e.message);
     }
 
   }
@@ -63,7 +63,10 @@ export default function Home() {
       body: formData,
     });
 
-    return res.json();
+    const { img, err} = await res.json();
+    if(err) throw new Error(err);
+
+    return { img };
 
   }
 
