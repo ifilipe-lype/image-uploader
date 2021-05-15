@@ -25,7 +25,7 @@ export default function Home() {
         return (<Preview imgSrc={uploadedImg} />)
 
       default :
-        return (<Uploader setImageFile={setImageFile} handleInputFile={handleInputFile} />)
+        return (<Uploader setImageFile={setImageFile} />)
     }
   }
 
@@ -48,10 +48,6 @@ export default function Home() {
       console.log(e.message);
     }
 
-  }
-
-  function handleInputFile(e){
-    setImageFile(e.target.files[0]);
   }
 
   async function uploadImage(imgFile){
