@@ -96,10 +96,10 @@ export default function Home() {
       <footer className="flex items-center justify-center py-4 text-gray-5 text-xs md:text-sm">
         <p className="text-center">
           created by{" "}
-          <a href="https://twitter.com/ifilipe_lype" target="_blank" className="font-semibold">
+          <a href="https://twitter.com/ifilipe_lype" target="_blank" className="font-semibold hover:underline">
             @ifilipe_lype
           </a>{" "}
-          - <a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx" target="_blank">devChallenges.io</a>
+          - <a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx" target="_blank" className="hover:underline">devChallenges.io</a>
         </p>
       </footer>
     </div>
