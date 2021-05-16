@@ -22,11 +22,9 @@ handler.post(async (req, res) => {
 			if (err){
 				return res.status(500).json({ err: "Failled to upload image!" });
 			}
-
 			return res.status(201).json({
 				img: {
-					public_id: image.public_id,
-					url: image.url,
+					url: image.secure_url,
 				}
 			});
 		});
