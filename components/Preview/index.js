@@ -8,7 +8,8 @@ export default function Preview({ imgSrc }) {
         const inputElem = inputRef.current;
         inputElem.focus();
         inputElem.select();
-        inputElem.setSelectionRange(0, 99999); /* For mobile devices */
+        /* For mobile devices */
+        inputElem.setSelectionRange(0, 99999);
         document.execCommand("copy");
         setCopied(true);
     }
@@ -18,9 +19,11 @@ export default function Preview({ imgSrc }) {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-12 w-12 text-green-1" fill="currentColor">
                 <path d="M0 0h24v24H0z" fill="none" /><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
             </svg>
+
             <h3 className="text-xl font-medium text-gray-2 mb-4">
                 Uploaded successfully!
             </h3>
+            
             <div className="rounded-xl overflow-hidden w-full shadow-sm max-h-56 my-8">
                 <img src={imgSrc} alt="uploaded image preview" className="w-full rounded-xl h-full object-cover" />
             </div>
