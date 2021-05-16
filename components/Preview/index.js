@@ -25,15 +25,15 @@ export default function Preview({ imgSrc }) {
                 <img src={imgSrc} alt="uploaded image preview" className="w-full rounded-xl h-full object-cover" />
             </div>
 
-            <div className="w-full p-1 rounded-lg flex-nowrap border border-gray-7 bg-gray-1 flex items-center justify-between">
+            <div className="w-full p-1 rounded-lg flex-wrap mb-4 md:flex-nowrap border border-gray-7 bg-gray-1 flex items-center justify-between">
                 <input type="text" value={imgSrc} className="sr-only" readOnly ref={inputRef} />
-                <span className="text-xs pl-2 w-8/12 overflow-hidden text-left whitespace-nowrap text-gray-2 overflow-ellipsis">{imgSrc}</span>
-                <button onClick={copyUrl} className="bg-blue1 px-4 py-2 text-white rounded-lg text-sm font-normal flex-nowrap">
+                <span className="text-xs px-2 py-2 md:py-0 w-full md:w-8/12 overflow-hidden text-left whitespace-nowrap text-gray-2 overflow-ellipsis">{imgSrc}</span>
+                <button onClick={copyUrl} className="bg-blue1 w-full md:w-auto px-4 py-2 text-white rounded-lg text-sm font-normal flex-nowrap">
                     Copy Link
                 </button>
             </div>
 
-            <div className="mt-4 text-xs md:text-sm text-blue1">
+            <div className="mt-4 text-xs text-center md:text-sm text-blue1">
                 {copied && <p>Image's link copied to the clipboard</p>}
             </div>
         </div>
